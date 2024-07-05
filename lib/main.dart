@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nutri_fit/Controller/repository.dart';
 import 'package:nutri_fit/View/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => RecipeProvider(),
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
