@@ -40,7 +40,6 @@ Future<void> fetchRecipe(String query) async {
 void searchRecipes( String query) {
   debouncer.run(() async {
      fetchRecipe( query);
-    print(recipes);
   });
 }
 }

@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nutri_fit/Model/recipe_model.dart';
 import 'package:nutri_fit/View/utils/colour.dart';
 import 'package:nutri_fit/View/utils/fonts.dart';
@@ -38,7 +37,7 @@ class Searchview extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 10,
-                          offset: Offset(10, 7), // changes position of shadow
+                          offset: const Offset(10, 7), 
                         ),
                       ],
                     ),

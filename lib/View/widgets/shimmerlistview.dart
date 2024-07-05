@@ -4,7 +4,7 @@ import 'package:shimmer/shimmer.dart';
 Widget shimmerListView() {
   return Flexible(
     child: ListView.builder(
-       physics: NeverScrollableScrollPhysics(),
+       physics: const NeverScrollableScrollPhysics(),
        shrinkWrap: true,
       itemCount: 10,
       itemBuilder: (context, index) {

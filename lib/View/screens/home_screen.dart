@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
               : Flexible(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: recipeprovider.recipes.length,
                   itemBuilder: (context, index) {
                     final recipe= recipeprovider.recipes[index];
