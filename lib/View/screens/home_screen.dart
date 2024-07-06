@@ -75,13 +75,22 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(6.0),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),color: greencolor),
-                        child: ListTile(
-                          leading: ClipOval(child: Image.network(recipe.image)),
-                          title: SizedBox(width: 50,child: myfonts3(recipe.label)),
-                          trailing: SizedBox(width: 100,child: Text(recipe.dietLabels.join('/'),overflow: TextOverflow.ellipsis,style: TextStyle(color: whitecolor),)),
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Searchview(recipe: recipe,)));
-                          },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: lightgreen)
+                            ),
+                            height: height*0.1,
+                            child: ListTile(
+                              leading: ClipOval(child: Image.network(recipe.image)),
+                              title: myfonts3(recipe.label),
+                              subtitle: Text(recipe.dietLabels.join(' ❁ '),style: TextStyle(color: lightgreen),),
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Searchview(recipe: recipe,)));
+                              },
+                            ),
+                          ),
                         ),
                       ),
                     );

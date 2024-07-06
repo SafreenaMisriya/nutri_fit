@@ -1,4 +1,6 @@
 // ignore_for_file: must_be_immutable
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:nutri_fit/Model/recipe_model.dart';
 import 'package:nutri_fit/View/utils/colour.dart';
@@ -25,9 +27,15 @@ class Searchview extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: [
                   Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                      ),
+                      color: greencolor,
+                    ),
                     height: height * 0.23,
                     width: double.infinity,
-                    color: greencolor,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -37,7 +45,7 @@ class Searchview extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 10,
-                          offset: const Offset(10, 7), 
+                          offset: const Offset(10, 7),
                         ),
                       ],
                     ),
@@ -52,6 +60,16 @@ class Searchview extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Positioned(
+                      right: 60,
+                      top: 20,
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.favorite_rounded,
+                            color: whitecolor,
+                            size: height * 0.05,
+                          )))
                 ],
               ),
               Padding(
@@ -65,10 +83,71 @@ class Searchview extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: height * 0.04,
+                            width: width * 0.08,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: lightgreen,
+                            ),
+                            child: Icon(
+                              Icons.flatware,
+                              size: height * 0.03,
+                              color: greencolor,
+                            ),
+                          ),
+                          SizedBox(
+                            width: width * 0.02,
+                          ),
+                          myfonts5(recipe.mealType.join('/'))
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * 0.03,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                              height: height * 0.04,
+                              width: width * 0.08,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: lightgreen,
+                              ),
+                              child: Icon(
+                                Icons.whatshot,
+                                size: height * 0.02,
+                                color: greencolor,
+                              )),
+                          SizedBox(
+                            width: width * 0.01,
+                          ),
+                          myfonts5(
+                              '${recipe.calories .round().toString()} calories')
+                        ],
+                      ),
+                    ],
+                  ),
+                  recipe.dietLabels.join().isEmpty
+                      ? Container()
+                      : myfonts(recipe.dietLabels.join(' ◉ ')),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.03,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
                     children: [
                       GestureDetector(
                         child: Container(
-                          height: height * 0.09,
+                          height: height * 0.085,
                           width: width * 0.2,
                           decoration: BoxDecoration(
                               color: greencolor,
@@ -93,7 +172,7 @@ class Searchview extends StatelessWidget {
                     children: [
                       GestureDetector(
                         child: Container(
-                          height: height * 0.09,
+                          height: height * 0.085,
                           width: width * 0.2,
                           decoration: BoxDecoration(
                               color: greencolor,
@@ -117,21 +196,16 @@ class Searchview extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: height * 0.02,
+                height: height * 0.01,
               ),
-              recipe.dietLabels.join().isEmpty
-                  ? Container()
-                  : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: myfonts2(recipe.dietLabels.join(' ◉ ')),
-                    ),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myfonts4(recipe.healthLabels.join(' ◉ ')),
-              ),
+             Padding(padding:const EdgeInsets.all(15.0),child: 
+                  myfonts4(recipe.healthLabels.join('  ◉  '))
+                  ,),
+                
+                SizedBox(
+                height: height * 0.03,
+              ),  
+              
             ],
           ),
         ),
