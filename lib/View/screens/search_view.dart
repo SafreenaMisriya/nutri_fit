@@ -1,12 +1,12 @@
 // ignore_for_file: must_be_immutable
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:nutri_fit/Controller/database.dart';
 import 'package:nutri_fit/Model/recipe_model.dart';
 import 'package:nutri_fit/View/utils/colour.dart';
 import 'package:nutri_fit/View/utils/fonts.dart';
 import 'package:nutri_fit/View/utils/resposive.dart';
 import 'package:nutri_fit/View/widgets/appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Searchview extends StatelessWidget {
@@ -17,6 +17,7 @@ class Searchview extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = Responsive.screenHeight(context);
     double width = Responsive.screenWidth(context);
+    var favoriteProvider = Provider.of<FavoriteProvider>(context);
     return SafeArea(
       child: Scaffold(
         appBar: customappbar(recipe.shareAs, context),
@@ -61,15 +62,29 @@ class Searchview extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      right: 60,
-                      top: 20,
-                      child: IconButton(
-                          onPressed: () {},
+                    right: 60,
+                    top: 20,
+                    child: Consumer<FavoriteProvider>(
+                      builder: (context, favoriteProvider, child) {
+                        bool isFavorite = favoriteProvider.list
+                            .any((element) => element.url == recipe.url);
+                        return IconButton(
+                          onPressed: () {
+                            if (isFavorite) {
+                              favoriteProvider.removeFavorite(recipe);
+                            } else {
+                              favoriteProvider.addFavorite(recipe);
+                            }
+                          },
                           icon: Icon(
                             Icons.favorite_rounded,
-                            color: whitecolor,
+                            color: isFavorite ? greencolor : whitecolor,
                             size: height * 0.05,
-                          )))
+                          ),
+                        );
+                      },
+                    ),
+                  )
                 ],
               ),
               Padding(
@@ -127,7 +142,7 @@ class Searchview extends StatelessWidget {
                             width: width * 0.01,
                           ),
                           myfonts5(
-                              '${recipe.calories .round().toString()} calories')
+                              '${recipe.calories.round().toString()} calories')
                         ],
                       ),
                     ],
@@ -198,14 +213,13 @@ class Searchview extends StatelessWidget {
               SizedBox(
                 height: height * 0.01,
               ),
-             Padding(padding:const EdgeInsets.all(15.0),child: 
-                  myfonts4(recipe.healthLabels.join('  ◉  '))
-                  ,),
-                
-                SizedBox(
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: myfonts4(recipe.healthLabels.join('  ◉  ')),
+              ),
+              SizedBox(
                 height: height * 0.03,
-              ),  
-              
+              ),
             ],
           ),
         ),
