@@ -17,7 +17,6 @@ class Searchview extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = Responsive.screenHeight(context);
     double width = Responsive.screenWidth(context);
-    var favoriteProvider = Provider.of<FavoriteProvider>(context);
     return SafeArea(
       child: Scaffold(
         appBar: customappbar(recipe.shareAs, context),

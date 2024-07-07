@@ -23,3 +23,6 @@ heading(String text){
 myfonts6(String text){
   return Text(text,style: GoogleFonts.roboto(fontWeight: FontWeight. bold,color: greencolor,fontSize: 17),);
 }
+heading2(String text){
+  return Text(text,style:GoogleFonts.rubikGlitchPop(fontWeight: FontWeight. bold,color:whitecolor,fontSize: 40),);
+}

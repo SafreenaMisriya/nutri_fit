@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nutri_fit/Controller/database.dart';
 import 'package:nutri_fit/Controller/repository.dart';
 import 'package:nutri_fit/Model/recipe_model.dart';
-import 'package:nutri_fit/View/screens/home_screen.dart';
 import 'package:nutri_fit/View/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
