@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:nutri_fit/View/screens/home_screen.dart';
 import 'package:nutri_fit/View/utils/fonts.dart';
@@ -9,10 +8,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Simulate app initialization time
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()), // Navigate to main screen
+        MaterialPageRoute(builder: (context) => HomeScreen()), 
       );
     });
 
@@ -21,7 +19,7 @@ class SplashScreen extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'asset/image/food.jpg',  // Adjust the path and file name as per your image
+            'asset/image/food.jpg', 
             fit: BoxFit.cover,
           ),
           Positioned(
