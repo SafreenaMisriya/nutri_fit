@@ -9,7 +9,7 @@ myfonts2(String text){
   return Text(text,style: GoogleFonts.bonaNova(fontWeight: FontWeight.bold,color: greencolor,fontSize: 18),);
 }
 myfonts3(String text){
-  return Text(text,style: GoogleFonts.roboto(fontWeight: FontWeight. bold,color: whitecolor,fontSize: 17),);
+  return Text(text,style: GoogleFonts.roboto(fontWeight: FontWeight. bold,color: whitecolor,fontSize: 17),overflow: TextOverflow.ellipsis,);
 }
 myfonts4(String text){
   return Text(text,style: GoogleFonts.bonaNova(fontWeight: FontWeight. w600,color:Colors.black,fontSize: 16),);

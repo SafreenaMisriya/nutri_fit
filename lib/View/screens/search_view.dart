@@ -76,7 +76,6 @@ class Searchview extends StatelessWidget {
                             } else {
                               favoriteProvider.addFavorite(recipe);
                               snakbarSuccessMessage(context, 'Recipe added to favorites');
-
                             }
                           },
                           icon: Icon(
@@ -90,10 +89,10 @@ class Searchview extends StatelessWidget {
                   )
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myfonts2(recipe.label),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Center(child:  myfonts2(recipe.label),),
+                ),
               SizedBox(
                 height: height * 0.03,
               ),
