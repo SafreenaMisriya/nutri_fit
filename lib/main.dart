@@ -4,6 +4,7 @@ import 'package:nutri_fit/Controller/database.dart';
 import 'package:nutri_fit/Controller/repository.dart';
 import 'package:nutri_fit/Model/recipe_model.dart';
 import 'package:nutri_fit/View/screens/splash_screen.dart';
+import 'package:nutri_fit/View/utils/colour.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        primaryColor: whitecolor,
+        scaffoldBackgroundColor: whitecolor,),
       home: const SplashScreen(),
     );
   }

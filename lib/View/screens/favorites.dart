@@ -5,6 +5,7 @@ import 'package:nutri_fit/View/screens/search_view.dart';
 import 'package:nutri_fit/View/utils/colour.dart';
 import 'package:nutri_fit/View/utils/fonts.dart';
 import 'package:nutri_fit/View/utils/resposive.dart';
+import 'package:nutri_fit/View/utils/snakbar.dart';
 import 'package:nutri_fit/View/widgets/favourte_appbar.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -76,6 +77,7 @@ class FavoriteScreen extends StatelessWidget {
                                       trailing: IconButton(
                                         onPressed: () {
                                           favoriteProvider.removeFavorite(recipe);
+                                          snakbardeleteMessage(context, 'Removed from favorites');
                                         },
                                         icon: Icon(
                                           Icons.favorite,

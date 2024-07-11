@@ -5,6 +5,7 @@ import 'package:nutri_fit/Model/recipe_model.dart';
 import 'package:nutri_fit/View/utils/colour.dart';
 import 'package:nutri_fit/View/utils/fonts.dart';
 import 'package:nutri_fit/View/utils/resposive.dart';
+import 'package:nutri_fit/View/utils/snakbar.dart';
 import 'package:nutri_fit/View/widgets/appbar.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -71,13 +72,16 @@ class Searchview extends StatelessWidget {
                           onPressed: () {
                             if (isFavorite) {
                               favoriteProvider.removeFavorite(recipe);
+                              snakbardeleteMessage(context, 'Removed from favorites');
                             } else {
                               favoriteProvider.addFavorite(recipe);
+                              snakbarSuccessMessage(context, 'Recipe added to favorites');
+
                             }
                           },
                           icon: Icon(
                             Icons.favorite_rounded,
-                            color: isFavorite ? greencolor : whitecolor,
+                            color: isFavorite ? greencolor : lightgreen,
                             size: height * 0.05,
                           ),
                         );
@@ -141,14 +145,17 @@ class Searchview extends StatelessWidget {
                             width: width * 0.01,
                           ),
                           myfonts5(
-                              '${recipe.calories.round().toString()} calories')
+                              '${recipe.calories.round().toString()} Calories')
                         ],
                       ),
                     ],
                   ),
-                  recipe.dietLabels.join().isEmpty
+                 SizedBox(
+                  width: width*0.5,
+                 child:    recipe.dietLabels.join().isEmpty
                       ? Container()
                       : myfonts(recipe.dietLabels.join(' ◉ ')),
+                 )
                 ],
               ),
               SizedBox(

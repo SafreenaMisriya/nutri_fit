@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           border:
                                               Border.all(color: lightgreen)),
-                                      height: height * 0.1,
+                                      height: height * 0.11,
                                       child: ListTile(
                                         leading: ClipOval(
                                             child: Image.network(recipe.image)),
